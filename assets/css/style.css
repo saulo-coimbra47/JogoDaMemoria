@@ -1,0 +1,74 @@
+body {
+    font-family: sans-serif;
+    background-color: #333;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+h1 {
+    color: #c0c0c0;
+    text-transform: uppercase;
+    text-shadow: -1px 1px 0 #c0c0c0, -2px 2px 0 #cfcfcf, -3px 3px 0 #dadada, -4px 4px 0 #e0dede;
+}
+
+.memory-game {
+    display: grid;
+    height: 80vh;
+    width: 50vw;
+    grid-template-columns: repeat(4, 1fr);
+    perspective: 1000px;
+}
+
+.card {
+    background: linear-gradient(-45deg, #3f3f3f, #6d6d6d, #cfcfcf, #fff9de);
+    background-size: 400% 400%;
+    height: 25vh;
+    width: 12vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 10%;
+    box-shadow: 1px 1px 1px rgba(1, 1, 1, .3);
+    cursor: pointer;
+    position: relative;
+    transform: scale(1);
+    transform-style: preserve-3d;
+    transition: transform .9s;
+}
+
+.card:hover {
+    animation: backgroundTransition 1s ease-in-out infinite;
+    transform: scale(0.97);
+    transition: transform .3s;
+}
+
+.card-front, 
+.card-back {
+    height: 90%;
+    width: 90%;
+    padding: 7%;
+    position: absolute;
+    backface-visibility: hidden;
+}
+
+.card-front {
+    transform: rotateY(180deg);
+}
+
+.card.flip {
+    transform: rotateY(180deg);
+}
+
+
+@keyframes backgroundTransition {
+    0% {
+        background-position: 0% 80%;
+    }
+    50% {
+        background-position: 80% 100%;
+    }
+    100% {
+        background-position: 0% 90%;
+    }
+}
